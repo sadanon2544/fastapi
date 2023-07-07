@@ -66,11 +66,14 @@ async def callback(request: StarletteRequest):
         "name": id_info.get("name")
     }
 
-    redirect_url = "https://botnoi-atdj.onrender.com?" + "&".join(f"{key}={value}" for key, value in query_params.items())
+    frontend_path = "https://botnoi-atdj.onrender.com/"  # เปลี่ยนเป็น path ของ frontend ที่ต้องการ
+    query_string = urlencode(query_params)
+    redirect_url = f"{frontend_path}?" + query_string
+
+    print(redirect_url)
 
 
     if(collection_account.find_one({"sub": id_info.get("sub")}) is None):
         user = collection_account.insert_one(id_info)
-
+        
     return RedirectResponse(redirect_url)
-
