@@ -24,7 +24,7 @@ flow = Flow.from_client_secrets_file(
     client_secrets_file=client_secrets_file,
     scopes=["https://www.googleapis.com/auth/userinfo.profile",
             "https://www.googleapis.com/auth/userinfo.email", "openid"],
-    redirect_uri="https://fastapi-ytfv.onrender.com/google/callback"
+    redirect_uri="https://botnoi-atdj.onrender.com/google/callback"
 )
 
 def login_is_required(func):
@@ -66,7 +66,7 @@ async def callback(request: StarletteRequest):
         "name": id_info.get("name")
     }
 
-    redirect_url = "https://fastapi-ytfv.onrender.com?" + "&".join(f"{key}={value}" for key, value in query_params.items())
+    redirect_url = "https://botnoi-atdj.onrender.com?" + "&".join(f"{key}={value}" for key, value in query_params.items())
 
 
     if(collection_account.find_one({"sub": id_info.get("sub")}) is None):
