@@ -62,13 +62,13 @@ async def root():
 # async def rules():
 #     return {"message": "*************************   rules   *************************"}
 
-@app.get("/logi")
+@app.get("/login")
 def login_facebook():
     # Redirect to Facebook login
     facebook_redirect_url = "https://www.facebook.com/v12.0/dialog/oauth"
     params = {
         "client_id": SOCIAL_AUTH_FACEBOOK_KEY,
-        "redirect_uri": "https://fastapi-ytfv.onrender.com/callback",
+        "redirect_uri": "https://botnoi-atdj.onrender.com/callback",
         "state": "YOUR_STATE",
         "scope": "email",  # กำหนด scope ตามความต้องการ
     }
@@ -79,11 +79,11 @@ def login_facebook():
 async def facebook_callback(request: Request, code: str, state: str):
     # ใช้ code ในการสร้าง access_token และรับข้อมูลผู้ใช้จาก Facebook
     facebook_token_url = "https://graph.facebook.com/v12.0/oauth/access_token"
-    home = "https://fastapi-ytfv.onrender.com"
+    home = "https://botnoi-atdj.onrender.com"
     params = {
         "client_id": SOCIAL_AUTH_FACEBOOK_KEY,
         "client_secret": SOCIAL_AUTH_FACEBOOK_SECRET,
-        "redirect_uri": "https://fastapi-ytfv.onrender.com/callback",
+        "redirect_uri": "https://botnoi-atdj.onrender.com/callback",
         "code": code,
     }
     async with httpx.AsyncClient() as client:
@@ -98,15 +98,15 @@ async def facebook_callback(request: Request, code: str, state: str):
     # สร้าง access token และเก็บไว้ใน session
     user_data["access_token"] = create_access_token(user_data)
 
-    query_params = {
-        "facebook_id": token_data.get("sub"),
-        "name": token_data.get("name")
-    }
+    # query_params = {
+    #     "facebook_id": token_data.get("sub"),
+    #     "name": token_data.get("name")
+    # }
 
     print(token_data)
 
-    redirect_url = f"{home}?{'&'.join([f'{key}={value}' for key, value in query_params.items()])}"
-    return RedirectResponse(url=redirect_url)
+    # redirect_url = f"{home}?{'&'.join([f'{key}={value}' for key, value in query_params.items()])}"
+    return RedirectResponse("message": "Facebook callback")
     # return {"message": "Facebook callback"}
 
 
