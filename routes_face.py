@@ -114,9 +114,6 @@ def facebook_login():
         'scope': 'email'  # Add additional permissions as required
     }
     url = f'https://www.facebook.com/v12.0/dialog/oauth?{urlencode(params)}'
-    print('Please open the following URL and login with your Facebook account:')
-    print(url)
-    code = input('Enter the authorization code from the URL: ')
     return RedirectResponse(url)
 
 @app.get("/callback")
