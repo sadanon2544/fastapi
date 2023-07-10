@@ -116,7 +116,7 @@ def facebook_login():
     return RedirectResponse(url)
 
 @app.get("/callback")
-def get_user_info():
+def get_user_info(request: Request):
     code = request.query_params.get("code")
     params = {
         'client_id': "1300273574255667",
