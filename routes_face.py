@@ -105,12 +105,10 @@ async def facebook_callback(request: Request, code: str, state: str):
 
 
 
-
-
 @app.get("/login")
-def facebook_login(app_id, redirect_uri):
+def facebook_login():
     params = {
-        'client_id': app_id,
+        'client_id': "1300273574255667",
         'redirect_uri': "https://botnoi-atdj.onrender.com/callback",
         'response_type': 'code',
         'scope': 'email'  # Add additional permissions as required
