@@ -107,7 +107,7 @@ async def facebook_callback(request: Request, code: str, state: str):
 @app.get("/login")
 def facebook_login():
     params = {
-        'client_id': "1300273574255667",
+        'client_id': "4034511063354843",
         'redirect_uri': "https://botnoi-atdj.onrender.com",
         'response_type': 'code',
         'scope': 'email'  # Add additional permissions as required
@@ -119,9 +119,9 @@ def facebook_login():
 def get_user_info(request: Request):
     code = request.query_params.get("code")
     params = {
-        'client_id': "1300273574255667",
+        'client_id': "4034511063354843",
         'redirect_uri': "https://botnoi-atdj.onrender.com",
-        'client_secret': "e7c85850d410d960ae41c6554a4c8cdd",
+        'client_secret': "03fec6cbaad7410cb4da08d967cd7b6b",
         'code': code
     }
     url = 'https://graph.facebook.com/v12.0/oauth/access_token'
