@@ -69,7 +69,7 @@ def login_facebook():
     params = {
         "client_id": SOCIAL_AUTH_FACEBOOK_KEY,
         "redirect_uri": "https://botnoi-atdj.onrender.com/callback",
-        "state": "YOUR_STATE",
+        # "state": "YOUR_STATE",
         "scope": "email",  # กำหนด scope ตามความต้องการ
     }
     redirect_url = f"{facebook_redirect_url}?{'&'.join([f'{key}={value}' for key, value in params.items()])}"
