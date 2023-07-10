@@ -144,9 +144,3 @@ def get_user_info(access_token):
     data = response.json()
     print(data)
     return data
-
-redirect_uri = 'https://botnoi-atdj.onrender.com/'  # Replace with your own redirect URI
-
-print('User Information:')
-print(f"Name: {user_info['name']}")
-print(f"Email: {user_info['email']}")
